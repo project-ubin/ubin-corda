@@ -1,0 +1,684 @@
+{
+	"info": {
+		"name": "ubin2a Azure Standard Api",
+		"_postman_id": "2ef3c2bb-79fc-6f27-ac12-a528032ddf1b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "bank info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"receiver\": \"CSFBSGSX\",\r\n  \"transactionAmount\": 900\r\n}"
+				},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/bank/info",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"bank",
+						"info"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "bank counterparties",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"receiver\": \"CSFBSGSX\",\r\n  \"transactionAmount\": 900\r\n}"
+				},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/bank/counterparties",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"bank",
+						"counterparties"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "everyone in network",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"receiver\": \"CSFBSGSX\",\r\n  \"transactionAmount\": 900\r\n}"
+				},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/bank/everyone",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"bank",
+						"everyone"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "balances of banks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"receiver\": \"CSFBSGSX\",\r\n  \"transactionAmount\": 900\r\n}"
+				},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/bank/balance/all",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"bank",
+						"balance",
+						"all"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "all transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/bank/transactions/",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"bank",
+						"transactions",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "pledge transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/bank/transactions/pledge",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"bank",
+						"transactions",
+						"pledge"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "redeem transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/bank/transactions/pledge",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"bank",
+						"transactions",
+						"pledge"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "transfer transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/bank/transactions/transfer",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"bank",
+						"transactions",
+						"transfer"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "queued payments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/queue",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"queue"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "queued outgoing payments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/queue/out",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"queue",
+						"out"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "queued incoming payments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/queue/in",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"queue",
+						"in"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "pending redeems",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/fund/redeems",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"fund",
+						"redeems"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deadlock notification",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/netting/status",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"netting",
+						"status"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create pledge in MEPS",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"receiver\": \"CSFBSGSX\",\r\n  \"amount\": 100.02\r\n}"
+				},
+				"url": {
+					"raw": "http://{{meps}}:{{mepsPort}}/meps/pledge",
+					"protocol": "http",
+					"host": [
+						"{{meps}}"
+					],
+					"port": "{{mepsPort}}",
+					"path": [
+						"meps",
+						"pledge"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "approve pledge in DLT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"receiver\": \"CSFBSGSX\",\r\n  \"transactionAmount\": 900\r\n}"
+				},
+				"url": {
+					"raw": "http://{{centralBank}}:{{bankPort}}/api/fund/pledge",
+					"protocol": "http",
+					"host": [
+						"{{centralBank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"fund",
+						"pledge"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "normal transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"priority\": 0,\r\n  \"receiver\": \"CHASSGSG\",\r\n  \"transactionAmount\": 1.11,\r\n  \"currency\": \"SGD\",\r\n  \"enqueue\" : 0\r\n}"
+				},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/fund/transfer",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"fund",
+						"transfer"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "enqueue during transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"priority\": 0,\r\n  \"receiver\": \"CHASSGSG\",\r\n  \"transactionAmount\": 1.00,\r\n  \"currency\": \"SGD\",\r\n  \"enqueue\" : 1\r\n}"
+				},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/fund/transfer",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"fund",
+						"transfer"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create redeem request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"transactionAmount\" : 20.00\n}"
+				},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/fund/redeem",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"fund",
+						"redeem"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "start LSM",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/netting",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"netting"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "settle next obligation",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/queue/settle",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"queue",
+						"settle"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "change queued payment status",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{ \"transId\" : \"E5F5E6C34D4F77B111F30BC673C6911ADFB73C1BFED888B951CFE53DBB9F981F\"},\n\t{ \"transId\" : \"48791FDEAE51A65264DB952A35260A9aD4C2BF76BCF8FF25F3916EE3A226C044\"},\n\t{ \"transId\" : \"3E67199CB8959C1F664F505CE761349971573D426E1872826CE0377B35076706\"}\n]"
+				},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/queue/status",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"queue",
+						"status"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "change queued payment priority",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{ \"transId\" : \"0CCFA9A5D0B327D6B58341F79E52FD9FC358820B42E73EB071A9DAC17FA5839A\", \"priority\" : 1 },\n\t{ \"transId\" : \"48791FDEAE51A65264DB952A35260A98D4C2BF76BCF8FF25F3916EE3A226C044\", \"priority\" : 0 },\n\t{ \"transId\" : \"E5F5E6C34D4F77B111F30BC673C6911ADFB73C1BFED888B951CFE53DBB9F981F\", \"priority\" : 1 }\n]"
+				},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/queue/priority",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"queue",
+						"priority"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "cancel queued payment",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{ \"transId\" : \"0CCFA9A5D0B327D6B58341F79E52FD9FC358820B42E73EB071A9DAC17FA5839A\" },\n\t{ \"transId\" : \"6A8952308179BD071E64FE11AE28F8E23B98D70D6F01EFDF63454F6DF1E54011\" },\n\t{ \"transId\" : \"48791FDEAE51A65264DB952A35260A98D4C2BF76BCF8FF25F3916EE3A226C044\" }\n]"
+				},
+				"url": {
+					"raw": "http://{{bank}}:{{bankPort}}/api/queue/cancel",
+					"protocol": "http",
+					"host": [
+						"{{bank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"queue",
+						"cancel"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "approve redeem",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"transId\" : \"9FAB500F8BA2C99E732513192B73B10B153DD19E717163DFD5DA9EB7E8D70DEE\"\n}"
+				},
+				"url": {
+					"raw": "http://{{centralBank}}:{{bankPort}}/api/fund/redeem",
+					"protocol": "http",
+					"host": [
+						"{{centralBank}}"
+					],
+					"port": "{{bankPort}}",
+					"path": [
+						"api",
+						"fund",
+						"redeem"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

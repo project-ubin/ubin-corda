@@ -1,0 +1,15 @@
+{
+  "name": "ubin2a",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "node scripts/clean.js",
+    "build": "yarn run clean && node scripts/build.js",
+    "deploy": "yarn run build && node scripts/deploy.js",
+    "qdeploy": "node scripts/quickdeploy.js"
+  },
+  "dependencies": {
+    "yarn": "^0.24.5"
+  }
+}
