@@ -2,7 +2,7 @@
 
 This repository contains the source code and test scripts for the Corda prototype in Project Ubin Phase 2.
 
-Ubin Phase 2 is a collaborative design and rapid prototyping project, exploring the use of Distributed Ledger Technologies (DLT) for Real-Time Gross Settlement. 
+Ubin Phase 2 is a collaborative design and rapid prototyping project, exploring the use of Distributed Ledger Technologies (DLT) for Real-Time Gross Settlement.
 * Read the **Project Ubin Phase 2 Report** [here](http://bit.ly/ubin2017rpt).
 * For more detailed documentation, refer to the Technical Reports: [Overview](https://github.com/project-ubin/ubin-docs/blob/master/UbinPhase2-Overview.pdf), [Corda](https://github.com/project-ubin/ubin-docs/blob/master/UbinPhase2-Corda.pdf) and [Testing](https://github.com/project-ubin/ubin-docs/blob/master/UbinPhase2-Testing.pdf).
 
@@ -83,10 +83,13 @@ You will need the following components set up/installed:
 * Git
 
 ## B. Network setup step:
-1. Set up network map
-2. Set up notary
-3. Set up bank nodes
-4. Set up Ubin external service (MEPS+ mock service)
+1\. Set up network map
+
+2\. Set up notary
+
+3\. Set up bank nodes
+
+4\. Set up Ubin external service (MEPS+ mock service)
 
 The script `configure.sh` from `ubin-corda-deployment` repository takes in 5 input parameters:
 * Node type (value: networkmap, notary, node)
@@ -118,10 +121,10 @@ sudo ./configure.sh networkmap <<VM Username>> <<Network Map Name>> nonValidatin
 ```sh
 # Network map name is "Network Map"
 # Network map IP address is "10.0.0.47"
-# VM username is "azureuser"
+# VM username is "dltusr"
 
 chmod +x configure.sh
-sudo ./configure.sh networkmap azureuser "Network Map" nonValidating 10.0.0.47
+sudo ./configure.sh networkmap dltusr "Network Map" nonValidating 10.0.0.47
 ```
 
 Note: Network map IP address is required in the set up of notary node and additional bank nodes
@@ -149,9 +152,9 @@ sudo ./configure.sh networkmap <<VM Username>> <<Network Map Name>> nonValidatin
 ```sh
 # Notary name is "Notary"
 # Network map IP address is "10.0.0.47"
-# VM username is "azureuser"
+# VM username is "dltusr"
 $ chmod +x configure.sh
-$ sudo ./configure.sh notary azureuser "Notary" nonValidating 10.0.0.47
+$ sudo ./configure.sh notary dltusr "Notary" nonValidating 10.0.0.47
 ```
 
 ### 3. Set Up Bank Nodes
@@ -172,8 +175,9 @@ $ git clone https://github.com/project-ubin/ubin-corda-deployment.git
 
 6\. Verify `config.properties` to ensure `ApproveRedeemURI` is configured with the Central Bank domain name.
 ```sh
-ApproveRedeemURI=http://<<centralbankdomain>>:9001/meps/redeem
+ApproveRedeemURI=http://<<host>>:9001/meps/redeem
 ```
+Note: Replace host with Central Bank virtual machine host/domain name.
 
 7\. Execute `configure.sh` script with:
 
@@ -184,17 +188,17 @@ $ sudo ./configure.sh notary <<VM Username>> <<Notary Name>> nonValidating <<Net
 ```sh
 # Nodename name is "BankA"
 # Network map IP address is "10.0.0.47"
-# VM username is "azureuser"
+# VM username is "dltusr"
 
 $ chmod +x configure.sh
-$ sudo ./configure.sh node azureuser "BankA" nonValidating 10.0.0.47
+$ sudo ./configure.sh node dltusr "BankA" nonValidating 10.0.0.47
 ```
 Note: do not name the Corda node with a name containing "node".
 
 
 ### 4. Setup Ubin External Service
 
-Ubin external service should be set up in the `Central Bank` virtual machine. This is a mock service of the current RTGS system, MEPS+. 
+Ubin external service should be set up in the `Central Bank` virtual machine. This is a mock service of the current RTGS system, MEPS+.
 
 #### Build
 
@@ -227,14 +231,14 @@ ubin-ext-service/application.properties
 With Corda configurations:
 
 ```sh
-PledgeURI=http://cordaknqx-node1.southeastasia.cloudapp.azure.com:9001/api/fund/pledge
-RedeemURI=http://cordaknqx-node1.southeastasia.cloudapp.azure.com:9001/api/fund/redeem
+PledgeURI=http://<host>:9001/api/fund/pledge
+RedeemURI=http://<host>:9001/api/fund/redeem
 Dlt=Corda
 ```
 
 Note:
 
-- `cordaknqx-node1.southeastasia.cloudapp.azure.com` is the Central Bank domain name in the current network.
+-  Replace host with Central Bank host/domain name.
 - `RedeemURI` is not used in Corda, it is just a placeholder.
 
 2\. Copy built JAR artifact and properties files to the Central Bank VM
@@ -252,18 +256,53 @@ $ java -jar -Dspring.config.location=application.properties -Dserver.port=9001 u
 
 ## A. Getting Started
 1\. Go to Node 0 Virtual Machine
+
 2\. From the home directory, clone the `ubin-corda-deployment` repository
 ```sh
 $ git clone https://github.com/project-ubin/ubin-corda-deployment.git
 ```
 
+3\. Update configuration variable with target environment detail
+```
+username='username'
+host_prefix='cordavm'
+host_suffix='.example.com'
+notary_host='notary.example.com'
+networkmap_host='networkmap.example.com'
+nm_db_url='jdbc:h2:tcp://networkmap.example.com:11000/node'
+nm_db_user='sa'
+```
+Note:
+- Populate username with VM username - This script assumes all vm in the network has the same username
+- This script assumes VMs hostname is in following format:
+    ```
+      <host_prefix><number><host_suffix>
+    ```
+- Number in hostname is assumed to be in consecutive order.
+    ```    
+    #Example:
+
+    node1.example.com
+    node2.example.com
+    ...
+    node13.example.com
+
+    #host_prefix: node
+    #host_suffx: .example.com
+    ```
+
+
+
 ## B. CorDapp Deployment
 
 1\. Copy CorDapp JARs into VM Node 0 into the following directory with SCP/FTP:
 ```sh
-/home/azureuser/ubin-corda-deployment/plugin
+/home/<username>/ubin-corda-deployment/plugin
 ```
+Note: Replace `username` with your VM username
+
 2\. Log in to VM Node 0 using SSH
+
 3\. Go to `ubin-corda-deployment` directory
 
 4\. Execute manage.sh to deploy CorDapp to all nodes in the network except the Notary and the Network Map. The script assumes that the nodes are named sequentially (e.g. 0 to 12):
@@ -274,7 +313,7 @@ $ ./manage.sh deploy 0 12
 This step does the following:
 
 - Delete everything in /app/corda/plugins
-- Copy all files from Node 0's /home/azureuser/deploy to the target node's /app/corda/plugins folder
+- Copy all plugins file from deployment node (VM Node 0) to the target node's /app/corda/plugins folder
 - Restart Corda and webserver in the node
 - Repeat for selected Nodes
 
@@ -282,7 +321,9 @@ Note: 0 and 12 in Step 4 represents the range of nodes. If you only require depl
 
 ## C. Restart All Nodes
 1\. Log in to VM Node 0 using SSH
+
 2\. Go to `ubin-corda-deployment` directory
+
 3\. Execute `manage.sh` to restart all nodes in the network (e.g. Node 0 - Node 12):
 ```sh
 $ ./manage.sh restart 0 12
@@ -291,7 +332,9 @@ Note: 0 and 12 in Step 3 represents the range of nodes. If you only require depl
 
 ## D. Stop All Nodes
 1\. Log in to VM Node 0 using SSH
+
 2\. Go to `ubin-corda-deployment` directory
+
 3\. Execute `manage.sh` to stop all nodes in the network (e.g. Node 0 - Node 12):
 ```sh
 $ ./manage.sh stop 0 12
@@ -300,8 +343,11 @@ Note: 0 and 12 in Step 3 represents the range of nodes. If you only require depl
 
 ## E. Clear All Data in Vault
 1\. Log in to VM Node 0 using SSH
-2\. Check that you are in `/home/azureuser`
+
+2\. Check that you are in `home` directory
+
 3\. Go to `ubin-corda-deployment`
+
 4\. Stop all Corda nodes (node 0 to 12) using:
 ```sh
 $ ./manage.sh stop 0 12
@@ -321,16 +367,21 @@ $ ./manage.sh restart 0 12
 
 ## F. Update Node Names
 1\. Stop the Corda server and webserver
+
 2\. Go to `/app/corda`
+
 3\. Update `node.conf` with command:
 ```sh
 $ vi node.conf
 ```
+
 4\. Change `myLegalName` in "O" key :
 ```sh
 "O=BOTKSGSX, L=Singapore, C=Singapore"
 ```
+
 5\. Delete the `certificates` folder. The certificates will be regenerated automatically upon Corda server start up
+
 6\. To purge the old entries in the Network Map, login to the h2 DB of the Network Map (nm0) and delete the old entries in `NODE_NETWORK_MAP_NODES` table
 
 Note:
@@ -342,13 +393,16 @@ As of Corda v1.0, 'CN' / Common Name field in the X500 is no longer supported. I
 (Based on instructions in https://docs.corda.net/node-database.html)
 
 1\. Install h2 client locally and run h2.sh (Unix) or h2.bat (Windows)
+
 2\. Enter the JDBC URL with format:
 ```
 jdbc:h2:tcp://<<CORDA NODE HOST>>:<<H2 DATABASE PORT>>/node
 
 # Example:
-jdbc:h2:tcp://cordaknqx-node0.southeastasia.cloudapp.azure.com:11000/node
+jdbc:h2:tcp://<host>:11000/node
 ```
+Note: Replace host with the node virtual machine host/domain name
+
 3\. Username and password is as per default
 4\. Connect to browse h2 DB
 
